@@ -26,7 +26,7 @@ $Users = Get-ADUser -Filter $UserFilter -SearchBase $SourceOU -Properties Samacc
 
 
 #The location path for the log
-$Logpath = "C:\choose a path"
+$Logpath = "C:\choose a path\file.txt"
 
 
 #Foreach User that is found in $Users
