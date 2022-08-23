@@ -15,9 +15,8 @@
 if (-not (Get-Module ActiveDirectory)){
     Import-Module ActiveDirectory -ErrorAction Stop
 }
-#Add-PSSnapin Microsoft.Exchange.Management.PowerShell.SnapIn
-#Run “get-pssnapin –registered” and see if the snap-in is already installed.
 
+#Run “get-pssnapin –registered” and see if the snap-in is already installed.
 #Import exchange shell into powershell
 Add-PSSnapin Microsoft.Exchange.Management.PowerShell.SnapIn 
 
