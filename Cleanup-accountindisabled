@@ -1,5 +1,4 @@
 #Script name: Cleanup-accountindisabled
-#Script location: vm0148. Interacts with Active Directory
 #Author: Recep Sarikaya
 #Date: 10-06-2022
 #Purpose: find all AD users in the disabled OU.
