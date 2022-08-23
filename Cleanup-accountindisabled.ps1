@@ -76,11 +76,11 @@ Foreach ($user in $Users){
         }
         
     
-    ############ Disable Emailadress #####################
+    ############ Disable EmailAddress #####################
     if($user.EmailAddress -eq $null){
         
-        #Write "No Email adres found" In the logfile
-        write-output "$(get-date) No Emailadress found for user $($user.SamAccountName)"|
+        #Write "No EmailAddress found" In the logfile
+        write-output "$(get-date) No EmailAddress found for user $($user.SamAccountName)"|
         #Save the result to the logfile 
         out-file -Filepath $Logpath -append
 
@@ -91,8 +91,8 @@ Foreach ($user in $Users){
         #Disable the mailbox
         Disable-Mailbox -identity $user.EmailAddress -Confirm:$false
         
-        #Write "Emailadress disabled" in the logfile
-        write-output " $(get-date) Emailadress disabled for user $($user.SamAccountName)"|
+        #Write "EmailAddress disabled" in the logfile
+        write-output " $(get-date) EmailAddress disabled for user $($user.SamAccountName)"|
 
         #Save the result to the logfile 
         out-file -Filepath $Logpath -append
