@@ -32,8 +32,18 @@ $Logpath = "C:\choose a path\file.txt"
 #Foreach User that is found in $Users
 Foreach ($user in $Users){
                             
-    #Move the $user to the $TargetOU (-passthru gives the $user information through the pipe)
-    Move-ADObject -identity $user -TargetPath $TargetOU -PassThru |
+    try{
+                            
+        #Move the $user to the $TargetOU 
+        Move-ADObject -identity $user -TargetPath $TargetOU  -ErrorAction Stop
+    }  
+    catch {
+        #Change the CN name of the user if already present in TargetOU
+        Rename-ADObject $user -NewName "$($user.Surname)$(Get-Random -Maximum 100), $($user.GivenName)"
+        
+        #Move the $user to the $TargetOU 
+        Move-ADObject -Identity $user.ObjectGUID -TargetPath $TargetOU
+    }    
             
     #Disable the $user          
     Disable-ADAccount
