@@ -22,8 +22,11 @@ Add-PSSnapin Microsoft.Exchange.Management.PowerShell.SnapIn
 #OU folder where the script looks 
 $SourceOU= 'OU = OU, DC = Domain, DC = com'
 
+#Timestamp for a monthly log file
+$Timestamp = Get-Date -UFormat %y-%m
+
 #The location path for the log
-$Logpath = "C:\choose a path\file.txt"
+$Logpath = "C:\choose a path\file_$($Timestamp).txt"
 
 #Date of 14 days ago
 $Date = (Get-Date).AddDays(-14)
@@ -105,6 +108,11 @@ Foreach ($user in $Users){
 
     #Save the result to the logfile 
     out-file -Filepath $Logpath -append
+    
+    #############Finishing Touches#############
+
+    #Set the Endof date of the user to never, so it doesn't show up in the next run
+    Clear-ADAccountExpiration -Identity $user
     
 
 }
