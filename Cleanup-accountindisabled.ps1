@@ -89,10 +89,10 @@ Foreach ($user in $Users){
 
         }else{
         #Disable the archive
-        Disable-Mailbox -identity $user.EmailAddress -Archive -Confirm:$false
+        Disable-Mailbox -identity $user.SamAccountName -Archive -Confirm:$false
 
         #Disable the mailbox
-        Disable-Mailbox -identity $user.EmailAddress -Confirm:$false
+        Disable-Mailbox -identity $user.SamAccountName -Confirm:$false
         
         #Write "EmailAddress disabled" in the logfile
         write-output " $(get-date) EmailAddress disabled for user $($user.SamAccountName)"|
